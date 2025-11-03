@@ -14,3 +14,20 @@ def add_task(tasks: list[dict[str,str]],name: str):
             return False
     tasks.append({"name":name,"status":"To do"})
     return True
+
+def show_task(tasks: list[dict[str,str]]):
+    """Show danh sách các task
+    -Yêu cầu: Hiển thị danh sách các task
+    -Trả về: Danh sách task đang có, show message nếu danh sách rỗng"""
+    if not tasks:
+        message="Chưa có task nào!"
+        print("Chưa có task nào!")
+        return message
+    lines=[]
+    for i, task in enumerate(tasks,start=1):
+        line=f"{i}. {task['name']} - {task['status']}"
+        print(line)
+        lines.append(line)
+    result="/n".join(lines)
+    print(result)
+    return result
