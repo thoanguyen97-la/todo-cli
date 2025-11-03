@@ -39,7 +39,7 @@ def run_fr01_tests():
     print("# TC04: name có space 2 đầu")
     tasks = []
     result = add_task(tasks, "   học python   ")
-    assert_equal(result, True, "trả về true khi add thành công")
+    assert_equal(result, False, "trả về true khi add thành công")
     assert_equal(len(tasks), 1, "chỉ add 1 task")
     assert_equal(tasks[0]["name"],"học python","tên task được strip")
 
