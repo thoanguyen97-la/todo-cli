@@ -29,5 +29,16 @@ def show_task(tasks: list[dict[str,str]]):
         print(line)
         lines.append(line)
     result="/n".join(lines)
-    print(result)
     return result
+
+def delete_task(tasks,index):
+    """Xoá task được chỉ định
+    """
+    removed= tasks.pop(index - 1)
+    print(f"xoá thành công task {removed["name"]}")
+    print("List task còn lại:")
+    show_task(tasks)
+
+
+
+
