@@ -1,3 +1,7 @@
+import json
+
+FILE_PATH = "tasks.json"
+
 def add_task(tasks: list[dict[str,str]],name: str):
     """
         Thêm một task mới vào danh sách.
@@ -13,6 +17,7 @@ def add_task(tasks: list[dict[str,str]],name: str):
         if task["name"].lower() == name.lower():
             return False
     tasks.append({"name":name,"status":"To do"})
+    save_tasks(tasks)
     return True
 
 def show_task(tasks: list[dict[str,str]]):
@@ -38,6 +43,20 @@ def delete_task(tasks,index):
     print(f"xoá thành công task {removed["name"]}")
     print("List task còn lại:")
     show_task(tasks)
+
+def save_tasks(tasks):
+    """Save task vào file json"""
+    with open(FILE_PATH, "w") as f:
+        json.dump(tasks, f, indent=4, ensure_ascii=False)
+
+def load_task():
+    """Load task json"""
+    try:
+        with open(FILE_PATH, "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
+
 
 
 
